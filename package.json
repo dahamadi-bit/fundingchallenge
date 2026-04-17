@@ -1,0 +1,26 @@
+{
+  "name": "tradingcockpit-v3.1",
+  "version": "3.1.0",
+  "description": "Discipline Engine + Signal Detection for TradingCockpit",
+  "main": "backend/dist/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\"",
+    "backend:dev": "cd backend && ts-node src/index.ts",
+    "frontend:dev": "cd frontend && npm start",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:backend": "cd backend && tsc",
+    "build:frontend": "cd frontend && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "trading",
+    "discipline",
+    "trading-rules",
+    "forex"
+  ],
+  "author": "Diego Ahamadi",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
