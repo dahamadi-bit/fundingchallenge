@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🎯 TradingCockpit v3.1 - Discipline Engine + Signal Detection
 
 **The app decides if you trade. Not your emotions. Not your 'just one more trade'.**
@@ -281,3 +282,7 @@ The discipline engine is your guardrail. It prevents self-sabotage. No padding t
 ---
 
 **Version:** 3.1.0 | **Status:** MVP Complete, Ready for Phase Test | **Author:** Diego Ahamadi
+=======
+# fundingchallenge
+Challenge en 2 step pro 
+>>>>>>> e1caee55183f961157406c23f36b1c6e1887965d
