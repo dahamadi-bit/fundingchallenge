@@ -4,6 +4,8 @@ import path from "path";
 import dotenv from "dotenv";
 import { DatabaseManager } from "./db/database";
 import engineRoutes from "./routes/engine";
+import matchTraderRoutes from "./routes/matchtrader";
+import matchTraderService from "./services/matchtraderService";
 
 dotenv.config();
 
@@ -36,6 +38,7 @@ app.get("/health", (req, res) => {
 
 // API Routes
 app.use("/api/engine", engineRoutes);
+app.use("/api/matchtrader", matchTraderRoutes);
 
 // Error handling
 app.use((err: any, req: Express.Request, res: Express.Response) => {
@@ -53,9 +56,19 @@ async function start() {
     await DatabaseManager.initialize();
     console.log("✅ Database initialized");
 
+    // Initialize MatchTrader
+    console.log("🔄 Connecting to MatchTrader...");
+    try {
+      await matchTraderService.login();
+      console.log("✅ MatchTrader connected");
+    } catch (error) {
+      console.warn("⚠️ MatchTrader connection failed (will retry on next request)");
+    }
+
     app.listen(PORT, () => {
       console.log(`🚀 TradingCockpit backend running on http://localhost:${PORT}`);
       console.log(`📊 API: http://localhost:${PORT}/api/engine/state`);
+      console.log(`💹 MatchTrader: http://localhost:${PORT}/api/matchtrader/account`);
       console.log(`🔐 API Key required for all endpoints except /health`);
     });
   } catch (error) {
